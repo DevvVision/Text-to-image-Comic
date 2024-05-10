@@ -38,11 +38,10 @@ st.set_page_config(
 st.write("# **Text to Image Generator**:wave:")
 # prompt = st.text_input(label="Enter your prompt here")
 
-tab1 = st.tabs(["**Comic**"])
-with tab1:
-    st.write("## Comic")
-    mdl_Comic = st.radio(" **Select the model** ",["Comic-Diffusion","comicbabes2","textual_inversion_comic_strip_turbo"],key="Model-selection-1")
-    check1 = st.button(label="Submit", key="Model-selection-4")
+
+st.write("## Comic")
+mdl_Comic = st.radio(" **Select the model** ",["Comic-Diffusion","comicbabes2","textual_inversion_comic_strip_turbo"],key="Model-selection-1")
+check1 = st.button(label="Submit", key="Model-selection-4")
 prompt = st.text_input(label="Enter your prompt here",key="Model-selection-7")
 if check1==True:
   if mdl_comic=="Comic-Diffusion":

@@ -23,7 +23,7 @@ def A_query(payload):
 
 
 API_URL = ["https://api-inference.huggingface.co/models/ogkalu/Comic-Diffusion","https://api-inference.huggingface.co/models/GraydientPlatformAPI/comicbabes2","https://api-inference.huggingface.co/models/Stelath/textual_inversion_comic_strip_turbo"]
-headers = {"Authorization": "Bearer "+st.secrets["API-KEY]}
+headers = {"Authorization": "Bearer "+st.secrets["API-KEY"]}
 
 st.set_page_config(
     page_title="text-to-image",

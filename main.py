@@ -3,11 +3,11 @@ import io
 import numpy as np
 from PIL import Image
 import streamlit as st
-def AnimeGen(text,index):
+def AnimeGen(text):
     try:
         image_bytes = A_query({
             "inputs": text,
-        },index)
+        })
         image = Image.open(io.BytesIO(image_bytes))
         # Convert PIL Image to bytes in PNG format
         image_png_bytes = io.BytesIO()
@@ -49,5 +49,5 @@ if check1==True:
   elif mdl_Comic=="comicbabes2":
     md_index=1
   elif mdl_Comic== "textual_inversion_comic_strip_turbo":
-    md_index=0
+    md_index=2
   AnimeGen(prompt)

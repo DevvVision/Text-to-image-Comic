@@ -44,10 +44,10 @@ mdl_Comic = st.radio(" **Select the model** ",["Comic-Diffusion","comicbabes2","
 check1 = st.button(label="Submit", key="Model-selection-4")
 prompt = st.text_input(label="Enter your prompt here",key="Model-selection-7")
 if check1==True:
-  if mdl_comic=="Comic-Diffusion":
+  if mdl_Comic=="Comic-Diffusion":
     md_index=0
-  elif mdl_comic=="comicbabes2":
+  elif mdl_Comic=="comicbabes2":
     md_index=1
-  elif mdl_comic== "textual_inversion_comic_strip_turbo":
+  elif mdl_Comic== "textual_inversion_comic_strip_turbo":
     md_index=0
   AnimeGen(prompt,"Comic")

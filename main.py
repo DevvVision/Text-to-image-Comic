@@ -13,7 +13,7 @@ def AnimeGen(text,index):
         image_png_bytes = io.BytesIO()
         image.save(image_png_bytes, format='PNG')
         st.image(image_png_bytes, caption='Generated Image', use_column_width=True)
-        st.download_button(label="Download File",data = image_png_bytes,file_name="Anime.png")
+        st.download_button(label="Download File",data = image_png_bytes,file_name="Comic.png")
     except Exception as e:
         print(e)
         st.error(f"Error occured while displaying the image {e}")
@@ -23,7 +23,7 @@ def A_query(payload):
 
 
 API_URL = ["https://api-inference.huggingface.co/models/ogkalu/Comic-Diffusion","https://api-inference.huggingface.co/models/GraydientPlatformAPI/comicbabes2","https://api-inference.huggingface.co/models/Stelath/textual_inversion_comic_strip_turbo"]
-headers = {"Authorization": "Bearer "+st.secrets["API_KEY"]}
+headers = {"Authorization": "Bearer "+st.secrets["API-KEY]}
 
 st.set_page_config(
     page_title="text-to-image",

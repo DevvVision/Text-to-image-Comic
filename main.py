@@ -50,4 +50,4 @@ if check1==True:
     md_index=1
   elif mdl_Comic== "textual_inversion_comic_strip_turbo":
     md_index=0
-  AnimeGen(prompt,"Comic")
+  AnimeGen(prompt)

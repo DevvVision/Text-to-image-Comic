@@ -3,7 +3,6 @@ import io
 import numpy as np
 from PIL import Image
 import streamlit as st
-import cv2
 def AnimeGen(text,index):
     try:
         image_bytes = A_query({
@@ -18,12 +17,6 @@ def AnimeGen(text,index):
     except Exception as e:
         print(e)
         st.error(f"Error occured while displaying the image {e}")
-        st.image(image_bytes, caption='Generated Image', use_column_width=True)
-        st.download_button(label="Download File", data=image_png_bytes, file_name="Anime.png")
-        nparr = np.frombuffer(image_bytes, np.uint8)
-        # Decode numpy array to image using OpenCV
-        img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-        st.image(img)
 def A_query(payload):
 	response = requests.post(API_URL[md_index], headers=headers, json=payload)
 	return response.content

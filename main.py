@@ -13,7 +13,7 @@ def AnimeGen(text):
         # Convert PIL Image to bytes in PNG format
         # image_png_bytes = io.BytesIO()
         # image.save(image_png_bytes, format='PNG')
-        st.image(image, caption='Generated Image', use_column_width=True,layout="Centre")
+        st.image(image, caption='Generated Image', use_column_width=True,width=600)
         st.download_button(label="Download File",data = image,file_name="Comic.png")
     except Exception as e:
         print(e)

@@ -8,7 +8,7 @@ def comicgen(text):
         image_bytes = C_query({
             "inputs": text,
         })
-	if(md_index==0):
+	if(md_index==0) or (md_index==2):
 		image = Image.open(io.BytesIO(image_bytes))
 		image_byt = io.BytesIO(image_bytes)
 		print(type(image))

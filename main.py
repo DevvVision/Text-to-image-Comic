@@ -8,7 +8,7 @@ def comicgen(text):
         image_bytes = C_query({
             "inputs": text,
         })
-	if(md_index==0) or (md_index==2):
+	if(md_index==0):
 		image = Image.open(io.BytesIO(image_bytes))
 		image_byt = io.BytesIO(image_bytes)
 		print(type(image))
@@ -43,7 +43,7 @@ st.set_page_config(
 )
 st.write("# **Text to Image Generator**:wave:")
 st.write("## Comic")
-mdl_Comic = st.radio(" **Select the model** ",["Comic-Diffusion","comicbabes2","textual_inversion_comic_strip_turbo"],key="Model-selection-1")
+mdl_Comic = st.radio(" **Select the model** ",["Comic-Diffusion","comicbabes2"],key="Model-selection-1")
 check1 = st.button(label="Submit", key="Model-selection-4")
 prompt = st.text_input(label="Enter your prompt here",key="Model-selection-7")
 if check1==True:
@@ -51,6 +51,4 @@ if check1==True:
     md_index=0
   elif mdl_Comic=="comicbabes2":
     md_index=1
-  elif mdl_Comic== "textual_inversion_comic_strip_turbo":
-    md_index=2
   comicgen(prompt)

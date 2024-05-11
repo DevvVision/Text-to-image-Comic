@@ -6,20 +6,16 @@ import streamlit as st
 
 def comicgen(text):
     image_bytes = C_query({
-        "inputs": text,
+        "inputs":text,
     })
-    if(md_index == 0):
-        image = Image.open(io.BytesIO(image_bytes))
+    if(md_index==0):
+        image=Image.open(io.BytesIO(image_bytes))
         image_byt = io.BytesIO(image_bytes)
-        print(type(image))
-        print(type(image_byt))
-        st.image(image, caption='Generated Image')
+        st.image(image,caption="Generated Image")
     else:
         image_byt = io.BytesIO(image_bytes)
-        print(type(image_byt))
-        st.image(image_byt, caption='Generated Image')
-        st.download_button(label="Download File", data=image_byt, file_name="Anime.jpeg")
-
+        st.image(image_byt,caption="Generated Image")
+    st.download_button(label="Download File",data = image_byt,file_name="Anime.jpg"
 def C_query(payload):
     response = requests.post(C_API_URL[md_index], headers=headers, json=payload)
     return response.content

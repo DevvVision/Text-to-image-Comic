@@ -8,12 +8,13 @@ def AnimeGen(text):
         image_bytes = A_query({
             "inputs": text,
         })
-        image = Image.open(io.BytesIO(image_bytes))
+	    # Image.open
+        image = io.BytesIO(image_bytes)
         # Convert PIL Image to bytes in PNG format
-        image_png_bytes = io.BytesIO()
-        image.save(image_png_bytes, format='PNG')
-        st.image(image_png_bytes, caption='Generated Image', use_column_width=True)
-        st.download_button(label="Download File",data = image_png_bytes,file_name="Comic.png")
+        # image_png_bytes = io.BytesIO()
+        # image.save(image_png_bytes, format='PNG')
+        st.image(image, caption='Generated Image', use_column_width=True)
+        st.download_button(label="Download File",data = image,file_name="Comic.png")
     except Exception as e:
         print(e)
         st.error(f"Error occured while displaying the image {e}")

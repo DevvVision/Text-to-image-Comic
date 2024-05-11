@@ -3,31 +3,28 @@ import io
 import numpy as np
 from PIL import Image
 import streamlit as st
+
 def comicgen(text):
-    try:
-        image_bytes = C_query({
-            "inputs": text,
-        })
-	if(md_index==0):
-		image = Image.open(io.BytesIO(image_bytes))
-		image_byt = io.BytesIO(image_bytes)
-		print(type(image))
-		print(type(image_byt))
-		st.image(image, caption='Generated Image')
-	else:
-		image_byt = io.BytesIO(image_bytes)
-		print(type(image))
-		print(type(image_byt))
-		st.image(image, caption='Generated Image')
+    image_bytes = C_query({
+        "inputs": text,
+    })
+    if(md_index==0):
+        image = Image.open(io.BytesIO(image_bytes))
+        image_byt = io.BytesIO(image_bytes)
+        print(type(image))
+        print(type(image_byt))
+        st.image(image, caption='Generated Image')
+    else:
+        image_byt = io.BytesIO(image_bytes)
+        print(type(image_byt))
+        st.image(image_byt, caption='Generated Image')
         st.download_button(label="Download File", data=image_byt, file_name="Anime.jpeg")
-    except Exception as e:
-        print(e)
-        st.error(f"Error occured while displaying the image {e}")
+
 def C_query(payload):
-	response = requests.post(C_API_URL[md_index], headers=headers, json=payload)
-	return response.content
+    response = requests.post(C_API_URL[md_index], headers=headers, json=payload)
+    return response.content
 
-
+# C_API_URL = ["https://api-inference.huggingface.co/models/ogka
 C_API_URL = ["https://api-inference.huggingface.co/models/ogkalu/Comic-Diffusion","https://api-inference.huggingface.co/models/GraydientPlatformAPI/comicbabes2"]
 headers = {"Authorization": "Bearer "+st.secrets["API-KEY"]}
 
@@ -53,3 +50,4 @@ if check1==True:
   elif mdl_Comic=="comicbabes2":
     md_index=1
   comicgen(prompt)
+

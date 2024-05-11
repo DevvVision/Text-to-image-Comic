@@ -6,7 +6,7 @@ import streamlit as st
 
 def comicgen(text):
     image_bytes = C_query({
-        "inputs":text,
+        "inputs":text
     })
     if(md_index==0):
         image=Image.open(io.BytesIO(image_bytes))

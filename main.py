@@ -8,11 +8,17 @@ def comicgen(text):
         image_bytes = C_query({
             "inputs": text,
         })
-        image = Image.open(io.BytesIO(image_bytes))
-        image_byt = io.BytesIO(image_bytes)
-        print(type(image))
-        print(type(image_byt))
-        st.image(image, caption='Generated Image')
+	if(md_index==0):
+		image = Image.open(io.BytesIO(image_bytes))
+		image_byt = io.BytesIO(image_bytes)
+		print(type(image))
+		print(type(image_byt))
+		st.image(image, caption='Generated Image')
+	else:
+		image_byt = io.BytesIO(image_bytes)
+		print(type(image))
+		print(type(image_byt))
+		st.image(image, caption='Generated Image')
         st.download_button(label="Download File", data=image_byt, file_name="Anime.jpeg")
     except Exception as e:
         print(e)

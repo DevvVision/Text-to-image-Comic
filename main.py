@@ -28,7 +28,7 @@ def C_query(payload):
 	return response.content
 
 
-C_API_URL = ["https://api-inference.huggingface.co/models/ogkalu/Comic-Diffusion","https://api-inference.huggingface.co/models/GraydientPlatformAPI/comicbabes2","https://api-inference.huggingface.co/models/Stelath/textual_inversion_comic_strip_turbo"]
+C_API_URL = ["https://api-inference.huggingface.co/models/ogkalu/Comic-Diffusion","https://api-inference.huggingface.co/models/GraydientPlatformAPI/comicbabes2"]
 headers = {"Authorization": "Bearer "+st.secrets["API-KEY"]}
 
 st.set_page_config(
@@ -43,9 +43,10 @@ st.set_page_config(
 )
 st.write("# **Text to Image Generator**:wave:")
 st.write("## Comic")
-mdl_Comic = st.radio(" **Select the model** ",["Comic-Diffusion","comicbabes2"],key="Model-selection-1")
-check1 = st.button(label="Submit", key="Model-selection-4")
-prompt = st.text_input(label="Enter your prompt here",key="Model-selection-7")
+mdl_Comic = st.radio(" **Select the model** ",["Comic-Diffusion","comicbabes2"])
+prompt = st.text_input(label="Enter your prompt here")
+check1 = st.button(label="Submit")
+
 if check1==True:
   if mdl_Comic=="Comic-Diffusion":
     md_index=0
